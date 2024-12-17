@@ -1,0 +1,133 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+p {
+	text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+}
+
+#root,
+#__next {
+	isolation: isolate;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+}
+
+body {
+	height: 100vh;
+	width: 100vw;
+}
+
+button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.calculator {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	border: 1px solid white;
+}
+
+.display {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	grid-area: 1 / 1 / 2 / 5;
+	border: 1px solid white;
+	background-color: green;
+}
+
+.buttons {
+	display: grid;
+	grid-area: 2 / 1 / 7 / 5;
+	border: 1px solid cyan;
+}
+
+.numpad {
+	display: grid;
+	grid-area: 3 / 1 / 7 / 4;
+	border: 1 px solid lime;
+}
+
+.number {
+	border: 2px solid red;
+	width: 1fr;
+	height: 1fr;
+}
+
+#clear {
+	grid-area: 2 / 1 / 3 / 3;
+	background-color: red;
+}
+
+#equals {
+	display: grid;
+	grid-area: 5 / 4 / 7 / 5;
+	background-color: cyan;
+}
+
+#zero {
+	grid-area: 6 / 1 / 7 / 3;
+}
+
+.operator {
+	background-color: grey;
+}
