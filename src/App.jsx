@@ -1,5 +1,5 @@
 import React from "react";
-import Calculator, { Display, Button } from "./Calculator";
+import Calculator from "./Calculator";
 //import "./App.css";
 import "./Calculator.css";
 
