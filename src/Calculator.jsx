@@ -23,19 +23,23 @@ export default function Calculator() {
 
 	function handleEqualsClick() {
 		let calcArray = [];
-		let newArr = [...enteredValues].join("").split(" ");
-		console.log(newArr);
-		for (let entry of newArr) {
+		let newArr = [...enteredValues]
+			.join("")
+			.split(" ")
+			.filter((el) => el !== "");
+		for (let i = 0; i < newArr.length; i++) {
 			let number;
-			if (entry.match(/\d+/g)) {
-				number = Number.parseFloat(entry);
+			if (newArr[i].match(/\d+/g)) {
+				number = Number.parseFloat(newArr[i]);
 				calcArray.push(number);
+			} else if (newArr[i] === "-" && newArr[i - 1].match(/\+|\*|\-\//)) {
+				calcArray.push(Number.parseFloat(newArr[i] + newArr[i + 1]));
+				newArr = newArr.splice(newArr[i + 1], 1);
 			} else {
-				number = entry;
+				number = newArr[i];
 				calcArray.push(number);
 			}
 		}
-		console.log(calcArray);
 		for (const element of calcArray) {
 			if (
 				(element === "+" ||
@@ -51,9 +55,7 @@ export default function Calculator() {
 				calcArray.unshift(result);
 			}
 		}
-		console.log(calcArray[0]);
 		setEnteredValues([...calcArray]);
-		//	setEnteredValues(calcArray[0]);
 	}
 
 	function handleClearBtnClick() {
@@ -78,7 +80,7 @@ export default function Calculator() {
 			const newArr = [...enteredValues]
 				.slice(0, enteredValues.indexOf(" "))
 				.concat(" ", operator, " ");
-			console.log(newArr);
+
 			setEnteredValues(newArr);
 		}
 	}
@@ -95,14 +97,13 @@ export default function Calculator() {
 	};
 
 	function handleDecimalClick() {
-		console.log(enteredValues);
 		let lastNumber;
 		if (enteredValues.includes(" ")) {
 			lastNumber = enteredValues.slice(enteredValues.lastIndexOf(" "));
 		} else {
 			lastNumber = enteredValues.slice(0);
 		}
-		console.log(lastNumber);
+
 		if (
 			enteredValues[enteredValues.length - 1].match(/\d/) &&
 			!lastNumber.includes(".")
